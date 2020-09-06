@@ -2,12 +2,12 @@
 
 ## Description
 
-A Calender application that alows the user to update and save events for daily use.
-The application runs in the browser and is color coated to the current time of day.
+A calendar application that allows the user to update and save events for daily use.
+The application runs in the browser and is color coded to the current time of day.
 There is also timer in the header that displays the current time and date. 
 
 ## Web Link
-Visit deplyed project at: 
+Visit deplyed project at:
 
 ![Alt text](images/WorkdayScheduler-SS1.png)
 
