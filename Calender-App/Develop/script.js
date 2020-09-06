@@ -1,36 +1,45 @@
 $(document).ready(function(){
 
-// Moment.js date and time code variables 
-    var tasks = moment().hours();
+    // Moment.js date and time code variables 
+    var hours = moment().hours();
 
     function getDate(){
         $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
     };
+    setInterval(getDate,1000);
 
-// // each time block is color-coded to indicate whether it is in the past, present, or future
+    // // each time block is color-coded to indicate whether it is in the past, present, or future
     function hourColor(){
         $("textarea").each(function(){
             var blockHour = $(this).attr("id")
             var blockNumber =parseInt(blockHour);
-            if (blockNumber === hour){
+            if (blockNumber === hours){
                 $(this).addClass("present");
-            } else if (blockNumber < hour){
+            } else if (blockNumber < hours){
                 $(this).addClass("past");
             } else {
                 $(this).addClass("future");
             };
         });
     };
+    hourColor();
+    setInterval(hourColor,1000);
+
+    // // The text for that event is saved in local storage
+    function renderStoredInputs(){
+        $(".description").each(function(){
+            var textareaId = $(this).attr("id")
+            $(this).val(localStorage.getItem(textareaId));
+        });
+    };
+    renderStoredInputs();
+
+    // // The saved events persist
+    $(".saveBtn").click(function(){
+        var scheduleInputs = $(this).siblings(".textarea").val();
+        var inputsLocation = $(this).siblings(".textarea").attr("id");
+        localStorage.setItem(inputsLocation,scheduleInputs);
+    });
 
 
-
-
-// // Date and time code variables
-
-// // Save button for saving to local storage
-
-// // Click into a time block and enter an event
-
-// // The text for that event is saved in local storage
-
-// // The saved events persist.
+});
