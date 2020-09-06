@@ -10,7 +10,7 @@ $(document).ready(function(){
 
     // // each time block is color-coded to indicate whether it is in the past, present, or future
     function hourColor(){
-        $("textarea").each(function(){
+        $("input").each(function(){
             var blockHour = $(this).attr("id")
             var blockNumber =parseInt(blockHour);
             if (blockNumber === hours){
@@ -28,18 +28,17 @@ $(document).ready(function(){
     // // The text for that event is saved in local storage
     function renderStoredInputs(){
         $(".description").each(function(){
-            var textareaId = $(this).attr("id")
-            $(this).val(localStorage.getItem(textareaId));
+            var inputId = $(this).attr("id")
+            $(this).val(localStorage.getItem(inputId));
         });
     };
     renderStoredInputs();
 
     // // The saved events persist
     $(".saveBtn").click(function(){
-        var scheduleInputs = $(this).siblings(".textarea").val();
-        var inputsLocation = $(this).siblings(".textarea").attr("id");
+        var scheduleInputs = $(this).siblings(".description").val();
+        var inputsLocation = $(this).siblings(".description").attr("id");
         localStorage.setItem(inputsLocation,scheduleInputs);
     });
-
 
 });
